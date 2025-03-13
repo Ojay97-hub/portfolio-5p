@@ -5,9 +5,9 @@ const Sidebar = () => {
     <aside className="fixed left-0 top-0 h-full w-64 bg-gray-800 text-white shadow-lg flex flex-col items-center py-10">
       {/* Profile Image */}
       <img
-        src="/profile.jpg"
+        src="./src/images/linkedin-dp.jpeg"
         alt="Owen James"
-        className="w-24 h-24 rounded-full border-4 border-sky-400 pt-5 mt-15"
+        className="w-24 h-24 rounded-full border-4 border-sky-400 mt-15"
       />
 
       {/* Name & Role */}
