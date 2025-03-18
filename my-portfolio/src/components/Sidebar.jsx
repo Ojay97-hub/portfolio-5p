@@ -22,9 +22,6 @@ const Sidebar = () => {
         <a href="https://www.linkedin.com/in/junior-software-dev-owen-cotter" target="_blank" aria-label="LinkedIn Profile">
           <FaLinkedin className="text-2xl hover:text-sky-400 transition" />
         </a>
-        <a href="https://twitter.com/your-profile" target="_blank" rel="noopener noreferrer" aria-label="Twitter Profile">
-          <FaTwitter className="text-2xl hover:text-sky-400 transition" />
-        </a>
         <a href="mailto:your.email@example.com" aria-label="Send Email">
           <FaEnvelope className="text-2xl hover:text-sky-400 transition" />
         </a>

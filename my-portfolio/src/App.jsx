@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Sidebar from "./components/Sidebar";
+import ProjectCarousel from "./components/ProjectCarousel";
 import { motion } from "framer-motion";
 
 const App = () => {
@@ -73,29 +74,7 @@ const App = () => {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="py-24 px-6 bg-gray-900 text-white">
-        <h2 className="text-5xl font-extrabold text-center mb-12">My Projects</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {repos.map((repo) => (
-            <motion.div 
-              key={repo.id} 
-              whileHover={{ scale: 1.05 }} 
-              className="bg-gray-800 p-6 rounded-xl shadow-lg transition-all"
-            >
-              <h3 className="text-2xl font-bold mb-2">{repo.name.replace(/-/g, " ")}</h3>
-              <p className="opacity-80">{repo.description || "No description available"}</p>
-              <a
-                href={repo.html_url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sky-400 hover:text-sky-300 transition-all block mt-4 font-medium"
-              >
-                🔗 View on GitHub
-              </a>
-            </motion.div>
-          ))}
-        </div>
-      </section>
+      <ProjectCarousel />
 
       {/* Contact Section */}
       <section id="contact" className="py-24 px-6 text-center bg-gray-800">
