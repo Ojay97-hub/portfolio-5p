@@ -19,7 +19,7 @@ const Sidebar = () => {
         <a href="https://github.com/Ojay97-hub" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
           <FaGithub className="text-2xl hover:text-sky-400 transition" />
         </a>
-        <a href="https://linkedin.com/in/your-profile" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile">
+        <a href="https://www.linkedin.com/in/junior-software-dev-owen-cotter" target="_blank" aria-label="LinkedIn Profile">
           <FaLinkedin className="text-2xl hover:text-sky-400 transition" />
         </a>
         <a href="https://twitter.com/your-profile" target="_blank" rel="noopener noreferrer" aria-label="Twitter Profile">

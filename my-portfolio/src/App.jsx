@@ -105,7 +105,7 @@ const App = () => {
           href="mailto:your.email@example.com" 
           className="text-sky-400 text-lg mt-6 inline-block hover:text-sky-300 transition-all font-semibold"
         >
-          📩 your.email@example.com
+          📩 owenjames97@outlook.com 
         </a>
       </section>
 
