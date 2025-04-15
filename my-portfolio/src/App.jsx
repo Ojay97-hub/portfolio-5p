@@ -39,7 +39,7 @@ const App = () => {
   return (
     <div className="min-h-screen font-sans bg-gray-900 text-white overflow-x-hidden">      
       {/* Navbar - visible on all screen sizes */}
-      <Navbar />
+      <Navbar sidebarVisible={sidebarVisible} />
 
       {/* Main layout */}
       <div className="flex flex-col lg:flex-row">
@@ -49,7 +49,7 @@ const App = () => {
         {/* Main content area */}
         <main className={`flex-grow w-full transition-all duration-300 ${sidebarVisible ? 'lg:pl-64' : 'lg:pl-0'} overflow-hidden`}>
           {/* Hero Section */}
-          <section id="hero" className="py-20 sm:py-24 md:py-32 px-4 sm:px-8 md:px-16 bg-gray-900 mt-16 lg:mt-0 min-h-screen flex items-center">
+          <section id="hero" className="py-20 sm:py-24 md:py-32 px-4 sm:px-8 md:px-16 bg-gray-900 mt-28 lg:mt-24 min-h-screen flex items-center">
             <motion.div 
               initial={{ opacity: 0, y: -50 }} 
               animate={{ opacity: 1, y: 0 }} 
