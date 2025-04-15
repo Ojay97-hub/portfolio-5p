@@ -18,7 +18,7 @@ const Sidebar = ({ onToggle }) => {
   return (
     <>
       {/* Desktop Sidebar - only visible on desktop/laptop (lg screens) */}
-      <aside className={`sidebar fixed left-0 top-0 pt-20 h-full w-64 bg-gray-800 text-white shadow-lg lg:flex flex-col items-center z-30 transition-all duration-300 ${isVisible ? 'lg:translate-x-0' : 'lg:translate-x-[-100%]'}`}>
+      <aside className={`sidebar fixed left-0 top-0 pt-20 h-full w-64 bg-gray-800 text-white shadow-lg hidden lg:flex flex-col items-center z-30 transition-all duration-300 ${isVisible ? 'lg:translate-x-0' : 'lg:translate-x-[-100%]'}`}>
         <SidebarContent isMobile={false} />
       </aside>
 
