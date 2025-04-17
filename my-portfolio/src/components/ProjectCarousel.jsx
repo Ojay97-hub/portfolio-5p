@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useState, useEffect } from "react";
 import { FaGithub, FaArrowLeft, FaArrowRight, FaStar, FaHeart } from "react-icons/fa";
 
 // Import Images
@@ -124,7 +123,7 @@ const ProjectCarousel = () => {
   };
 
   return (
-    <section id="projects" className="py-20 sm:py-24 md:py-28 lg:py-36 px-4 sm:px-6 md:px-12 bg-gradient-to-br from-indigo-950 via-blue-900 to-sky-800 text-white relative">
+    <section id="projects" className="pt-24 py-20 sm:py-24 md:py-28 lg:py-36 px-4 sm:px-6 md:px-12 bg-gradient-to-br from-indigo-950 via-blue-900 to-sky-800 text-white relative">
       {/* Background decoration elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
         <div className="absolute top-20 left-10 w-64 h-64 bg-sky-500 rounded-full filter blur-3xl opacity-20"></div>
@@ -134,124 +133,118 @@ const ProjectCarousel = () => {
       </div>
       
       <div className="max-w-7xl mx-auto relative z-10 pt-4 sm:pt-6 md:pt-10">
-        <motion.h2 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-4 tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-indigo-400 text-center relative z-20"
-        >
-          My Projects
-        </motion.h2>
         
-        <motion.p 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          viewport={{ once: true }}
+        <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-8 tracking-wide text-center relative z-20">
+          My Projects
+        </h2>
+        
+        <p 
           className="text-base sm:text-lg max-w-3xl mx-auto text-gray-200 leading-relaxed mt-2 px-4 mb-10 sm:mb-12 md:mb-16 text-center"
         >
           Over the course of my 12-month Full-Stack Development program at <span className="text-sky-400 font-semibold">Code Institute</span>, 
           I built a series of projects that showcase my growth as a developer. Each assignment challenged me to apply new technologies, 
           enhance user experiences, and develop real-world applications.
-        </motion.p>
+        </p>
 
         <div 
-          className="relative w-full max-w-5xl mx-auto px-4 sm:px-10 md:px-20 md:p-6 bg-gray-900/20 backdrop-blur-sm rounded-3xl md:shadow-xl" 
+          className="relative w-full max-w-5xl mx-auto px-4 sm:px-10 md:px-20 md:p-6 rounded-3xl" 
           onMouseEnter={() => setIsHovering(true)} 
           onMouseLeave={() => setIsHovering(false)}
           onTouchStart={onTouchStart}
           onTouchMove={onTouchMove}
           onTouchEnd={onTouchEnd}
         >
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -30 }}
-              transition={{ duration: 0.5 }}
-              className="rounded-2xl shadow-2xl overflow-hidden md:m-4"
-            >
-              <div className="flex flex-col md:grid md:grid-cols-12 bg-gradient-to-br from-gray-900 to-gray-800 border border-gray-700 hover:border-sky-500 transition-all duration-300 rounded-2xl transform hover:scale-[1.02] md:hover:scale-[1.03] hover:shadow-[0_10px_50px_-12px_rgba(56,189,248,0.35)] md:min-h-[400px]">
-                {/* Project Image */}
-                <div className="relative overflow-hidden h-48 sm:h-64 md:h-full md:col-span-5">
-                  <img
-                    src={projects[index].image}
-                    alt={projects[index].name}
-                    className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent pointer-events-none"></div>
-                  
-                  {/* Heart icon button - now functional */}
-                  <button 
-                    className="absolute top-4 right-4 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gray-800/50 backdrop-blur-sm flex items-center justify-center group transition-all hover:bg-gray-700/60"
-                    onClick={(e) => toggleFavorite(e, index)}
-                    aria-label={favorites[index] ? "Remove from favorites" : "Add to favorites"}
-                  >
-                    <FaHeart 
-                      className="transition-all transform group-hover:scale-110" 
-                      size={20} 
-                      color={favorites[index] ? "#ef4444" : "#ffffff"}
-                    />
-                  </button>
-                </div>
+          <div
+            key={index}
+            className="rounded-2xl shadow-2xl overflow-hidden md:m-4"
+          >
+            <div className="flex flex-col md:grid md:grid-cols-12 bg-gradient-to-br from-gray-900 to-gray-800 border border-gray-700 hover:border-sky-500 transition-all duration-300 rounded-2xl transform hover:scale-[1.02] md:hover:scale-[1.03] hover:shadow-[0_10px_50px_-12px_rgba(56,189,248,0.35)] md:min-h-[400px]">
+              {/* Project Image */}
+              <div className="relative overflow-hidden h-48 sm:h-64 md:h-full md:col-span-5">
+                <img
+                  src={projects[index].image}
+                  alt={projects[index].name}
+                  className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent pointer-events-none"></div>
                 
-                {/* Project Info */}
-                <div className="p-6 sm:p-8 flex flex-col md:col-span-7">
-                  {/* Project Title & Rating */}
-                  <div className="flex justify-between items-start mb-2 sm:mb-4">
-                    <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white">
-                      {projects[index].name.split(":")[1].trim()}
-                    </h3>
-                    <div className="flex text-yellow-400">
-                      {[...Array(5)].map((_, i) => (
-                        <FaStar key={i} className="text-yellow-400" size={16} />
-                      ))}
-                    </div>
+                {/* Heart icon button - now functional */}
+                <button 
+                  className="absolute top-4 right-4 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gray-800/50 backdrop-blur-sm flex items-center justify-center group transition-all hover:bg-gray-700/60"
+                  onClick={(e) => toggleFavorite(e, index)}
+                  aria-label={favorites[index] ? "Remove from favorites" : "Add to favorites"}
+                >
+                  <FaHeart 
+                    className="transition-all transform group-hover:scale-110" 
+                    size={20} 
+                    color={favorites[index] ? "#ef4444" : "#ffffff"}
+                  />
+                </button>
+              </div>
+              
+              {/* Project Info */}
+              <div className="p-6 sm:p-8 flex flex-col md:col-span-7">
+                {/* Project Title & Rating */}
+                <div className="flex justify-between items-start mb-2 sm:mb-4">
+                  <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white">
+                    {projects[index].name.split(":")[1].trim()}
+                  </h3>
+                  <div className="flex text-yellow-400">
+                    {[...Array(5)].map((_, i) => (
+                      <FaStar key={i} className="text-yellow-400" size={16} />
+                    ))}
                   </div>
+                </div>
 
-                  {/* Tech Stack */}
-                  <div className="flex flex-wrap gap-2 mt-2 mb-3 sm:mb-4">
-                    {projects[index].tech.map((tech, idx) => (
+                {/* Tech Stack */}
+                <div className="flex flex-wrap gap-2 mt-2 mb-3 sm:mb-4">
+                  {projects[index].tech.map((tech, idx) => {
+                    // Color coding for learning techs
+                    let extraClasses = "";
+                    if (["React", "Azure", "Tailwind CSS"].includes(tech)) {
+                      extraClasses = "border-2 border-yellow-400 text-yellow-300 bg-yellow-900/60 animate-pulse hover:animate-none hover:bg-yellow-400/80 hover:text-gray-900";
+                    } else {
+                      extraClasses = "bg-gray-700/60 hover:bg-sky-500/70 text-white";
+                    }
+                    return (
                       <span
                         key={idx}
-                        className="px-3 py-1 sm:px-4 sm:py-1.5 bg-gray-700/60 backdrop-blur-sm rounded-full text-xs sm:text-sm font-medium hover:bg-sky-500/70 transition-all"
+                        className={`px-3 py-1 sm:px-4 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 shadow-md cursor-pointer ${extraClasses}`}
                       >
                         {tech}
                       </span>
-                    ))}
-                  </div>
+                    );
+                  })}
+                </div>
 
-                  {/* Project Description - Now using the longer description */}
-                  <p className="text-gray-300 mt-2 sm:mt-4 text-sm sm:text-base flex-grow leading-relaxed">
-                    {projects[index].longDescription}
-                  </p>
+                {/* Project Description - Now using the longer description */}
+                <p className="text-gray-300 mt-2 sm:mt-4 text-sm sm:text-base flex-grow leading-relaxed">
+                  {projects[index].longDescription}
+                </p>
 
-                  {/* Action Buttons - Now with Live Site & GitHub buttons side by side */}
-                  <div className="mt-4 sm:mt-6 grid grid-cols-2 gap-3">
-                    <a
-                      href={projects[index].liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="bg-sky-500 hover:bg-sky-400 text-white flex items-center justify-center gap-2 py-2 sm:py-3 rounded-xl transition-all font-medium transform hover:translate-y-[-2px] hover:shadow-lg"
-                    >
-                      <span className="text-sm sm:text-base">Live Site</span>
-                    </a>
-                    <a
-                      href={projects[index].github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="bg-transparent flex items-center justify-center gap-2 border border-sky-500 hover:bg-sky-500/20 text-white py-2 sm:py-3 rounded-xl transition-all font-medium group hover:border-sky-400 transform hover:translate-y-[-2px]"
-                    >
-                      <FaGithub className="group-hover:scale-110 transition-transform" /> 
-                      <span className="text-sm sm:text-base">GitHub</span>
-                    </a>
-                  </div>
+                {/* Action Buttons - Now with Live Site & GitHub buttons side by side */}
+                <div className="mt-4 sm:mt-6 grid grid-cols-2 gap-3">
+                  <a
+                    href={projects[index].liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-sky-500 hover:bg-sky-400 text-white flex items-center justify-center gap-2 py-2 sm:py-3 rounded-xl transition-all font-medium transform hover:translate-y-[-2px] hover:shadow-lg"
+                  >
+                    <span className="text-sm sm:text-base">Live Site</span>
+                  </a>
+                  <a
+                    href={projects[index].github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-transparent flex items-center justify-center gap-2 border border-sky-500 hover:bg-sky-500/20 text-white py-2 sm:py-3 rounded-xl transition-all font-medium group hover:border-sky-400 transform hover:translate-y-[-2px]"
+                  >
+                    <FaGithub className="group-hover:scale-110 transition-transform" /> 
+                    <span className="text-sm sm:text-base">GitHub</span>
+                  </a>
                 </div>
               </div>
-            </motion.div>
-          </AnimatePresence>
+            </div>
+          </div>
 
           {/* Navigation Buttons - Hidden on mobile, visible on md screens and above */}
           <button
