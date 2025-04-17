@@ -7,6 +7,7 @@ import Sidebar, { SidebarContent } from "./components/Sidebar";
 import ProjectCarousel from "./components/ProjectCarousel";
 import { motion } from "framer-motion";
 import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
+import linkedinImg from './assets/images/linkedin-dp.jpeg';
 
 const App = () => {
   const [repos, setRepos] = useState([]);
@@ -123,7 +124,7 @@ const App = () => {
                         {/* Larger Profile Image */}
                         <div className="relative">
                           <img
-                            src="./src/images/linkedin-dp.jpeg"
+                            src={linkedinImg}
                             alt="Owen Cotter"
                             className="rounded-full border-4 border-sky-400 object-cover w-40 h-40"
                           />

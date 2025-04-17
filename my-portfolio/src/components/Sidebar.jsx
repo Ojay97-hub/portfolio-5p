@@ -1,5 +1,8 @@
+import React from "react";
 import { FaGithub, FaLinkedin, FaEnvelope, FaArrowLeft } from "react-icons/fa";
 import { useState, useEffect } from "react";
+import PropTypes from "prop-types";
+import linkedinImg from '../assets/images/linkedin-dp.jpeg';
 
 const Sidebar = ({ onToggle }) => {
   const [isVisible, setIsVisible] = useState(true);
@@ -43,6 +46,10 @@ const Sidebar = ({ onToggle }) => {
   );
 };
 
+Sidebar.propTypes = {
+  onToggle: PropTypes.func,
+};
+
 // Separate component for sidebar content so it can be reused in the mobile view
 export const SidebarContent = ({ isMobile }) => {
   // If isMobile is not explicitly passed, it'll be undefined and default rendering will apply
@@ -51,7 +58,7 @@ export const SidebarContent = ({ isMobile }) => {
       {/* Profile Image */}
       <div className="relative">
         <img
-          src="./src/images/linkedin-dp.jpeg"
+          src={linkedinImg}
           alt="Owen Cotter"
           className={`rounded-full border-4 border-sky-400 object-cover ${isMobile ? 'w-24 h-24' : 'w-32 h-32'}`}
         />
@@ -93,6 +100,10 @@ export const SidebarContent = ({ isMobile }) => {
       )}
     </div>
   );
+};
+
+SidebarContent.propTypes = {
+  isMobile: PropTypes.bool,
 };
 
 export default Sidebar;

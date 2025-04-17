@@ -41,7 +41,7 @@ const Navbar = () => {
             {mobileMenuOpen && (
               <div className="absolute right-4 top-16 w-64 bg-gray-900/90 rounded-xl shadow-xl z-50 py-4 animate-fade-in sm:hidden">
                 <div className="flex items-center gap-3 px-6 pb-4 border-b border-gray-700">
-                  <img src="/src/images/linkedin-dp.jpeg" alt="Owen Cotter" className="w-10 h-10 rounded-full border-2 border-sky-400 object-cover" />
+                  <img src="/linkedin-dp.jpeg" alt="Owen Cotter" className="w-10 h-10 rounded-full border-2 border-sky-400 object-cover" />
                   <span className="text-lg font-bold">Owen Cotter</span>
                 </div>
                 <ul className="flex flex-col space-y-2 px-6 pt-4">
