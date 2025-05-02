@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
-import React from "react";
-import { useEffect, useState } from "react";
+import React, { useState } from "react";
+import { useEffect } from "react";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Sidebar, { SidebarContent } from "./components/Sidebar";
@@ -8,10 +8,14 @@ import ProjectCarousel from "./components/ProjectCarousel";
 import { motion } from "framer-motion";
 import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
 import linkedinImg from './assets/images/linkedin-dp.jpeg';
+import emailjs from 'emailjs-com';
 
 const App = () => {
   const [repos, setRepos] = useState([]);
   const [sidebarVisible, setSidebarVisible] = useState(true);
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [sending, setSending] = useState(false);
+  const [formStatus, setFormStatus] = useState('');
 
   // Function to update sidebar visibility state
   const updateSidebarVisibility = (isVisible) => {
@@ -36,6 +40,34 @@ const App = () => {
       })
       .catch(error => console.error("Error fetching repos:", error));
   }, []);
+
+  const handleInputChange = (e) => {
+    setFormData({ ...formData, [e.target.id]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSending(true);
+    setFormStatus('');
+    emailjs.send(
+      'service_juu8wrd', 
+      'template_0mcmcc3', 
+      {
+        from_name: formData.name,
+        from_email: formData.email,
+        message: formData.message,
+      },
+      'FkWtfM3OeTu_mwrhP' 
+    )
+    .then(() => {
+      setFormStatus('Message sent successfully!');
+      setFormData({ name: '', email: '', message: '' });
+    })
+    .catch(() => {
+      setFormStatus('Failed to send message. Please try again.');
+    })
+    .finally(() => setSending(false));
+  };
 
   return (
     <div className="min-h-screen font-sans bg-gray-900 text-white overflow-x-hidden">
@@ -291,43 +323,53 @@ const App = () => {
                   {/* Contact Form */}
                   <div className="bg-gray-700/90 rounded-2xl p-6 sm:p-8 shadow-xl transition-all duration-300 hover:shadow-2xl hover:shadow-sky-500/20 hover:bg-gray-700">
                     <h3 className="text-2xl font-bold mb-6 text-sky-400">Send a Message</h3>
-                    <form className="space-y-6">
+                    <form className="space-y-6" onSubmit={handleSubmit}>
                       <div>
                         <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-1">Your Name</label>
                         <input 
                           type="text" 
                           id="name" 
+                          value={formData.name}
+                          onChange={handleInputChange}
                           className="w-full px-4 py-2 bg-gray-800 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-400 focus:border-transparent text-white transition-all duration-300 hover:border-sky-400"
                           placeholder="John Doe"
+                          required
                         />
                       </div>
-                      
                       <div>
                         <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-1">Your Email</label>
                         <input 
                           type="email" 
                           id="email" 
+                          value={formData.email}
+                          onChange={handleInputChange}
                           className="w-full px-4 py-2 bg-gray-800 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-400 focus:border-transparent text-white transition-all duration-300 hover:border-sky-400"
                           placeholder="john@example.com"
+                          required
                         />
                       </div>
-                      
                       <div>
                         <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-1">Message</label>
                         <textarea 
                           id="message" 
                           rows="5" 
+                          value={formData.message}
+                          onChange={handleInputChange}
                           className="w-full px-4 py-2 bg-gray-800 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-400 focus:border-transparent text-white resize-none transition-all duration-300 hover:border-sky-400"
-                          placeholder="Hi Owen, I&#39;d like to discuss a project opportunity..."
+                          placeholder="Hi Owen, I'd like to discuss a project opportunity..."
+                          required
                         ></textarea>
                       </div>
-                      
                       <button
                         type="submit"
-                        className="w-full bg-sky-500 hover:bg-sky-400 text-white px-4 py-3 rounded-lg font-bold transition-all duration-300 transform hover:scale-[1.02] hover:shadow-lg"
+                        className="w-full bg-sky-500 hover:bg-sky-400 text-white px-4 py-3 rounded-lg font-bold transition-all duration-300 transform hover:scale-[1.02] hover:shadow-lg disabled:opacity-60"
+                        disabled={sending}
                       >
-                        Send Message
+                        {sending ? 'Sending...' : 'Send Message'}
                       </button>
+                      {formStatus && (
+                        <div className={`text-center font-semibold mt-2 ${formStatus.includes('successfully') ? 'text-green-400' : 'text-red-400'}`}>{formStatus}</div>
+                      )}
                     </form>
                   </div>
                   
